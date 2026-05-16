@@ -12,6 +12,8 @@ namespace CryptoMonitor.Models
     {
         [JsonPropertyName("bitcoin")]
         public CryptoData? Bitcoin { get; set; }
+
+        [JsonPropertyName("ethereum")]
         public CryptoData? Ethereum { get; set; }
     }
 }

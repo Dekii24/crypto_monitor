@@ -19,10 +19,9 @@ namespace CryptoMonitor.Services
                 var response = await _httpClient.GetAsync("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd");
                 response.EnsureSuccessStatusCode();
 
-                var jsonString = await response.Content.ReadAsStringAsync();
+                var jsonData = await response.Content.ReadAsStringAsync();
 
-                var data = JsonSerializer.Deserialize<CryptoResponse>(jsonString);
-
+                var data = JsonSerializer.Deserialize<CryptoResponse>(jsonData);
                 return data;
             }
             catch (Exception e)
