@@ -1,0 +1,17 @@
+﻿using System.Text.Json.Serialization;
+
+namespace CryptoMonitor.Models
+{
+    public class CryptoData
+    {
+        [JsonPropertyName("usd")]
+        public decimal Usd { get; set; }
+    }
+
+    public class CryptoResponse
+    {
+        [JsonPropertyName("bitcoin")]
+        public CryptoData? Bitcoin { get; set; }
+        public CryptoData? Ethereum { get; set; }
+    }
+}
