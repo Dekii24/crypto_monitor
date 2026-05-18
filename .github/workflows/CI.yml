@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI/CD
 
 on:
   push:
@@ -30,3 +30,20 @@ jobs:
         cd CryptoMonitor
         docker build . --file Dockerfile --tag ghcr.io/dekii24/cryptomonitor:latest
         docker push ghcr.io/dekii24/cryptomonitor:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Log in to the server and update
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          sudo docker pull ghcr.io/dekii24/cryptomonitor:latest
+          sudo docker stop my-crypto-app || true
+          sudo docker rm my-crypto-app || true
+          sudo docker run -d -p 80:8080 --name my-crypto-app ghcr.io/dekii24/cryptomonitor:latest
