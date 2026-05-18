@@ -16,3 +16,4 @@ jobs:
 
       - name: Build
         run: docker build -t cryptomonitor:latest .
+#Trigger GitHub Actions
