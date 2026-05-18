@@ -16,7 +16,7 @@ namespace CryptoMonitor.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd");
+                var response = await _httpClient.GetAsync("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd");
                 response.EnsureSuccessStatusCode();
 
                 var jsonData = await response.Content.ReadAsStringAsync();

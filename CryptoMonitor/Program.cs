@@ -22,6 +22,7 @@ app.MapGet("/", () => Results.Content(@"
         <h1>Crypto exchange rates</h1>
         <h2 id='btc'>Bitcoin: Loading...</h2>
         <h2 id='eth'>Ethereum: Loading...</h2>
+        <h2 id='sol'>Solana: Loading...</h2>
         
         <script>
             async function fetchPrices() {
@@ -32,10 +33,12 @@ app.MapGet("/", () => Results.Content(@"
                     if (data && data.bitcoin && data.ethereum) {
                         document.getElementById('btc').innerText = 'Bitcoin: $' + data.bitcoin.usd;
                         document.getElementById('eth').innerText = 'Ethereum: $' + data.ethereum.usd;
+                        document.getElementById('sol').innerText = 'Solana: $' + data.solana.usd;
                     }
                 } catch (error) {
                     document.getElementById('btc').innerText = 'Error while updating data!';
                     document.getElementById('eth').innerText = 'Error while updating data!';
+                    document.getElementById('sol').innerText = 'Error while updating data!';
                 }
             }
             fetchPrices();
