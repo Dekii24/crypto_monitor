@@ -64,9 +64,9 @@ app.MapGet("/", () => Results.Content(@"
                         ethEl.style.color = getColor(eth, prevPrices.eth);
                         solEl.style.color = getColor(sol, prevPrices.sol);
 
-                        btcEl.innerText = '$' + btc;
-                        ethEl.innerText = '$' + eth;
-                        solEl.innerText = '$' + sol;
+                        btcEl.innerText = '$'  + btc;
+                        ethEl.innerText = '$'  + eth;
+                        solEl.innerText = '$'  + sol;
 
                         prevPrices.btc = btc;
                         prevPrices.eth = eth;
